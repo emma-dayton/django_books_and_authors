@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+  {% block content %}
+    <div class="jumbotron" style="margin-right: 25px">
+      <h1>Authors</h1>
+    </div>
+      <div class="row" style="margin-right: 10px">
+        <div class="col" style="width: 20%">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Grow Our Library</h5>
+              <p class="card-text">If you would like to add a book or author to our library, please follow the links below.</p>
+              <a href="/books/add_book" class="card-link">Add a book</a>
+              <a href="/authors/add_author" class="card-link">Add an Author</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-8" >
+        <div class="card">
+          <h5 class="card-header">Library</h5>
+          <div class="card-body">
+            <h5 class="card-title">Our current Authors</h5>
+            <p class="card-text">
+              Below you will find all the authors currently in our library, arranged alphabetically by last name.
+              Follow the provided links if you wish to find further information about a given author,
+              such as a short biographical note and the books they have written. You can update the information for
+              a writer from that author's individual page.
+            </p>
+          </div>
+          <ul class="list-group">
+            {% for author in authors %}
+            <li class="list-group-item">
+              {{ author.first_name }} {{ author.last_name }}
+              <span style="float: right;">
+              <a href="/authors/{{author.id}}" class="card-link">view author info</a><span style="color:grey;"> - - -</span>
+              <a href="/authors/{{ author.id }}/remove_author" class="card-link">Remove Author?</a></span>
+
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  {% endblock content %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+  {% block content %}
+    <div class="jumbotron" style="margin-right: 25px">
+      <h1>Books</h1>
+    </div>
+    <div class="row" style="margin-right: 10px">
+      <div class="col" style="width: 20%">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Grow Our Library</h5>
+            <p class="card-text">If you would like to add a book or author to our library, please follow the links below.</p>
+            <a href="/books/add_book" class="card-link">Add a book</a>
+            <a href="/authors/add_author" class="card-link">Add an Author</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-8" >
+      <div class="card">
+        <h5 class="card-header">Library</h5>
+        <div class="card-body">
+          <h5 class="card-title">Our current titles</h5>
+          <p class="card-text">
+            Below you will find all the titles currently in our library, arranged by book title.
+            follow the provided links if you wish to find further information about a given book,
+            such as a short description and the authors of the book. You can update the information for
+            a title from that books individual page.
+          </p>
+        </div>
+        <ul class="list-group">
+          {% for book in books %}
+          <li class="list-group-item">
+            {{ book.title }}
+            <span style="float: right;"><a href="/books/{{book.id}}" class="card-link">view book info</a><span style="color:grey;"> - - -</span> 
+              <a href="/books/{{ book.id }}/remove_book" class="card-link">Remove Book?</a></span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  {% endblock content %}
