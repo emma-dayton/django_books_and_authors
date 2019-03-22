@@ -51,7 +51,7 @@ def add_book_new(request):
         for writer in request.POST['writers']:
             book.authors.add(Author.objects.get(id=writer))
         print(request.POST, '******************************')
-    return redirect(f'/books')
+    return redirect(f'/books/{book.id}')
 
 def edit_book(request, num):
     book = Book.objects.get(id=num)
